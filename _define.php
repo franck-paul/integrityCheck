@@ -1,23 +1,32 @@
 <?php
-# -- BEGIN LICENSE BLOCK ----------------------------------
-#
-# This file is part of Dotclear 2 "Integrity Check" plugin.
-#
-# Copyright (c) 2010 Bruno Hondelatte, and contributors. 
-# Many, many thanks to Olivier Meunier and the Dotclear Team.
-# Licensed under the GPL version 2.0 license.
-# See LICENSE file or
-# http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-#
-# -- END LICENSE BLOCK ------------------------------------
-if (!defined('DC_RC_PATH')) { return; }
+/**
+ * @brief integrityCheck, a plugin for Dotclear 2
+ *
+ * @package Dotclear
+ * @subpackage Plugins
+ *
+ * @author Bruno Hondelatte and contributors
+ *
+ * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
+ */
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 $this->registerModule(
-	/* Name */			"IntegrityCheck",
-	/* Description*/		"Checks dotclear installation files integrity",
-	/* Author */			"Bruno Hondelatte",
-	/* Version */			'1.0',
-	/* Permissions */		'admin'
-);
+    'IntegrityCheck',
+    'Checks dotclear installation files integrity',
+    'Bruno Hondelatte and contributors',
+    '2.0',
+    [
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_ADMIN,
+        ]),
+        'type' => 'plugin',
 
-?>
+        'details'    => 'https://open-time.net/?q=integrityCheck',
+        'support'    => 'https://github.com/franck-paul/integrityCheck',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/integrityCheck/master/dcstore.xml',
+    ]
+);
