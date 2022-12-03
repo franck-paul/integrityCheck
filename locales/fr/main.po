@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 integrityCheck module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-03 06:53+0100\n"
+"POT-Creation-Date: 2022-12-03 07:21+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,11 +25,11 @@ msgstr "Les fichiers suivants diffèrent de votre installation initiale de dotcl
 msgid "An unexpected error occured : "
 msgstr "Une erreur inattendue s'est produite : "
 
+msgid "System"
+msgstr ""
+
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
 msgid "All your installation files are correct."
 msgstr "Tous vos fichiers d'installation sont corrects."
-
-msgid "back"
-msgstr ""
