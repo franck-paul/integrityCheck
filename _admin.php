@@ -13,10 +13,10 @@ if (!defined('DC_CONTEXT_ADMIN')) {
     return;
 }
 
-$_menu['System']->addItem(
+dcCore::app()->menu[dcAdmin::MENU_SYSTEM]->addItem(
     __('Integrity Check'),
-    'plugin.php?p=integrityCheck',
+    dcCore::app()->adminurl->get('admin.plugin.integrityCheck'),
     'images/check-on.png',
     preg_match('/plugin.php\?p=integrityCheck(&.*)?$/', $_SERVER['REQUEST_URI']),
-    $core->auth->isSuperAdmin() && is_readable(DC_DIGESTS)
+    dcCore::app()->auth->isSuperAdmin() && is_readable(DC_DIGESTS)
 );
