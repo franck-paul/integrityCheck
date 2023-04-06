@@ -13,31 +13,23 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../git-plugins/integrityCheck/src/Backend.php:36
-#: ../git-plugins/integrityCheck/src/Manage.php:83
-#: ../git-plugins/integrityCheck/src/Manage.php:88
 msgid "Integrity Check"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:60
 msgid "The following files differ from your initial dotclear installation :"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:65
 msgid "An unexpected error occured : "
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:87
 msgid "System"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:96
 msgid "Diagnostics"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:97
 msgid "All your installation files are correct."
 msgstr ""
