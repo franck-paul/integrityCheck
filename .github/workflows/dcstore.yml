@@ -66,8 +66,10 @@ jobs:
               }
             }
           }
-          echo "::set-output name=module_version::$version\n";
-          echo "::set-output name=module_dcmin::$dcmin\n";
+          // echo "::set-output name=module_version::$version\n";
+          // echo "::set-output name=module_dcmin::$dcmin\n";
+          file_put_contents($_ENV["GITHUB_OUTPUT"], "module_version=$version", FILE_APPEND);
+          file_put_contents($_ENV["GITHUB_OUTPUT"], "module_dcmin=$dcmin", FILE_APPEND);
 
       # Cope with returned versions
       - name: Log output of the script
