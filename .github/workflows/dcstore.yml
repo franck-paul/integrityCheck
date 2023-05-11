@@ -22,7 +22,7 @@ jobs:
           php-version: '8.0'
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # Back to default branche
       - name: Back to default branch of repository
