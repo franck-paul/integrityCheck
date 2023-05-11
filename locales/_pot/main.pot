@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 integrityCheck module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-03 09:44+0200\n"
+"POT-Creation-Date: 2023-05-11 13:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/integrityCheck/src/Backend.php:36
-#: ../git-plugins/integrityCheck/src/Manage.php:83
-#: ../git-plugins/integrityCheck/src/Manage.php:88
+#: ../git-plugins/integrityCheck/src/Manage.php:81
+#: ../git-plugins/integrityCheck/src/Manage.php:86
 msgid "Integrity Check"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:60
+#: ../git-plugins/integrityCheck/src/Manage.php:58
 msgid "The following files differ from your initial dotclear installation :"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:65
+#: ../git-plugins/integrityCheck/src/Manage.php:63
 msgid "An unexpected error occured : "
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:87
+#: ../git-plugins/integrityCheck/src/Manage.php:85
 msgid "System"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:96
+#: ../git-plugins/integrityCheck/src/Manage.php:94
 msgid "Diagnostics"
 msgstr ""
 
-#: ../git-plugins/integrityCheck/src/Manage.php:97
+#: ../git-plugins/integrityCheck/src/Manage.php:95
 msgid "All your installation files are correct."
 msgstr ""

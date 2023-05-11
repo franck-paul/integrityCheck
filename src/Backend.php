@@ -21,7 +21,7 @@ class Backend extends dcNsProcess
 {
     public static function init(): bool
     {
-        static::$init = defined('DC_CONTEXT_ADMIN');
+        static::$init = My::checkContext(My::BACKEND);
 
         return static::$init;
     }
@@ -34,10 +34,10 @@ class Backend extends dcNsProcess
 
         dcCore::app()->menu[dcAdmin::MENU_SYSTEM]->addItem(
             __('Integrity Check'),
-            dcCore::app()->adminurl->get('admin.plugin.integrityCheck'),
+            My::makeUrl(),
             'images/check-on.png',
-            preg_match('/plugin.php\?p=integrityCheck(&.*)?$/', $_SERVER['REQUEST_URI']),
-            dcCore::app()->auth->isSuperAdmin() && is_readable(DC_DIGESTS)
+            preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
+            My::checkContext(My::MENU) && is_readable(DC_DIGESTS)
         );
 
         return true;
