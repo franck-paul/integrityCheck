@@ -24,7 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Back to default branche
+      # Back to default branch
       - name: Back to default branch of repository
         shell: bash
         run: |
