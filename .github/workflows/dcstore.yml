@@ -66,8 +66,6 @@ jobs:
               }
             }
           }
-          //echo "::set-output name=module_version::$version\n";
-          //echo "::set-output name=module_dcmin::$dcmin\n";
           file_put_contents(getenv('GITHUB_OUTPUT'), "module_version=$version\n", FILE_APPEND);
           file_put_contents(getenv('GITHUB_OUTPUT'), "module_dcmin=$dcmin\n", FILE_APPEND);
 
@@ -114,8 +112,8 @@ jobs:
           format: markdown
           message: |
             → Update *dcstore.xml* file if necessary
+            Repository: *${{github.repository}}*
             Version: *${{steps.getversion.outputs.module_version}}* (Dotclear ${{steps.getversion.outputs.module_dcmin}}+)
             Branch: *${{ github.ref }}*
-            Repository: *${{github.repository}}*
             Owner: *${{github.repository_owner}}*
             🍺
