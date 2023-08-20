@@ -15,23 +15,21 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\integrityCheck;
 
 use dcCore;
-use dcNsProcess;
-use dcPage;
 use dcUpdate;
+use Dotclear\Core\Backend\Notices;
+use Dotclear\Core\Backend\Page;
+use Dotclear\Core\Process;
 use Exception;
 
-class Manage extends dcNsProcess
+class Manage extends Process
 {
-    protected static $init = false; /** @deprecated since 2.27 */
     /**
      * Initializes the page.
      */
     public static function init(): bool
     {
         // Manageable only by super-admin
-        static::$init = My::checkContext(My::MANAGE);
-
-        return static::$init;
+        return self::status(My::checkContext(My::MANAGE));
     }
 
     /**
@@ -39,7 +37,7 @@ class Manage extends dcNsProcess
      */
     public static function process(): bool
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return false;
         }
 
@@ -75,19 +73,19 @@ class Manage extends dcNsProcess
      */
     public static function render(): void
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return;
         }
 
-        dcPage::openModule(__('Integrity Check'));
+        Page::openModule(__('Integrity Check'));
 
-        echo dcPage::breadcrumb(
+        echo Page::breadcrumb(
             [
                 __('System')          => '',
                 __('Integrity Check') => '',
             ]
         );
-        echo dcPage::notices();
+        echo Notices::getNotices();
 
         // Content
         if (!dcCore::app()->admin->has_bad_files) {
@@ -96,6 +94,6 @@ class Manage extends dcNsProcess
             '<p class="message">' . __('All your installation files are correct.') . '</p>';
         }
 
-        dcPage::closeModule();
+        Page::closeModule();
     }
 }

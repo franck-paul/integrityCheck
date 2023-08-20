@@ -13,29 +13,26 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\integrityCheck;
 
-use dcAdmin;
 use dcCore;
-use dcNsProcess;
+use Dotclear\Core\Backend\Menus;
+use Dotclear\Core\Process;
 
-class Backend extends dcNsProcess
+class Backend extends Process
 {
-    protected static $init = false; /** @deprecated since 2.27 */
     public static function init(): bool
     {
-        static::$init = My::checkContext(My::BACKEND);
-
-        return static::$init;
+        return self::status(My::checkContext(My::BACKEND));
     }
 
     public static function process(): bool
     {
-        if (!static::$init) {
+        if (!self::status()) {
             return false;
         }
 
-        dcCore::app()->menu[dcAdmin::MENU_SYSTEM]->addItem(
+        dcCore::app()->admin->menus[Menus::MENU_SYSTEM]->addItem(
             __('Integrity Check'),
-            My::makeUrl(),
+            My::manageUrl(),
             'images/check-on.png',
             preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
             My::checkContext(My::MENU) && is_readable(DC_DIGESTS)
