@@ -13,7 +13,7 @@ $this->registerModule(
     'IntegrityCheck',
     'Checks dotclear installation files integrity',
     'Bruno Hondelatte and contributors',
-    '3.3.1',
+    '4.0',
     [
         'requires'    => [['core', '2.27'], ['php', '8.1']],
         'permissions' => dcCore::app()->auth->makePermissions([
