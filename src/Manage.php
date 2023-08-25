@@ -77,7 +77,7 @@ class Manage extends Process
             return;
         }
 
-        Page::openModule(__('Integrity Check'));
+        Page::openModule(My::name());
 
         echo Page::breadcrumb(
             [

@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\integrityCheck;
 
-use dcCore;
 use Dotclear\Core\Backend\Menus;
 use Dotclear\Core\Process;
 
@@ -30,13 +29,7 @@ class Backend extends Process
             return false;
         }
 
-        dcCore::app()->admin->menus[Menus::MENU_SYSTEM]->addItem(
-            __('Integrity Check'),
-            My::manageUrl(),
-            'images/check-on.png',
-            preg_match(My::urlScheme(), $_SERVER['REQUEST_URI']),
-            My::checkContext(My::MENU) && is_readable(DC_DIGESTS)
-        );
+        My::addBackendMenuItem(Menus::MENU_SYSTEM);
 
         return true;
     }
