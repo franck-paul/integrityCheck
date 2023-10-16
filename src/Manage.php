@@ -15,9 +15,9 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\integrityCheck;
 
 use dcCore;
-use dcUpdate;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
+use Dotclear\Core\Backend\Update;
 use Dotclear\Core\Process;
 use Exception;
 
@@ -43,7 +43,7 @@ class Manage extends Process
 
         // Init stuff
         dcCore::app()->admin->has_bad_files = false;
-        dcCore::app()->admin->updater       = new dcUpdate(DC_UPDATE_URL, 'dotclear', DC_UPDATE_VERSION, DC_TPL_CACHE . '/versions');
+        dcCore::app()->admin->updater       = new Update(DC_UPDATE_URL, 'dotclear', DC_UPDATE_VERSION, DC_TPL_CACHE . '/versions');
 
         // Run check
         try {
