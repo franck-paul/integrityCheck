@@ -15,11 +15,8 @@ $this->registerModule(
     'Bruno Hondelatte and contributors',
     '4.0',
     [
-        'requires'    => [['core', '2.28']],
-        'permissions' => dcCore::app()->auth->makePermissions([
-            dcAuth::PERMISSION_ADMIN,
-        ]),
-        'type' => 'plugin',
+        'requires' => [['core', '2.28']],
+        'type'     => 'plugin',
 
         'details'    => 'https://open-time.net/?q=integrityCheck',
         'support'    => 'https://github.com/franck-paul/integrityCheck',

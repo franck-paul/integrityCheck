@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\integrityCheck;
 
+use Dotclear\App;
 use Dotclear\Module\MyPlugin;
 
 /**
@@ -21,4 +22,22 @@ use Dotclear\Module\MyPlugin;
  */
 class My extends MyPlugin
 {
+    /**
+     * Check permission depending on given context
+     *
+     * @param      int   $context  The context
+     *
+     * @return     bool  true if allowed, else false
+     */
+    public static function checkCustomContext(int $context): ?bool
+    {
+        return match ($context) {
+            self::MANAGE,
+            self::CONFIG,
+            self::MENU,
+            self::WIDGETS => !App::task()->checkContext('FRONTEND') && App::auth()->isSuperAdmin(),   // Super-admin only
+
+            default => null
+        };
+    }
 }

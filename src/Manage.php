@@ -14,7 +14,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\integrityCheck;
 
-use dcCore;
+use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
 use Dotclear\Core\Backend\Update;
@@ -42,17 +42,17 @@ class Manage extends Process
         }
 
         // Init stuff
-        dcCore::app()->admin->has_bad_files = false;
-        dcCore::app()->admin->updater       = new Update(DC_UPDATE_URL, 'dotclear', DC_UPDATE_VERSION, DC_TPL_CACHE . '/versions');
+        App::backend()->has_bad_files = false;
+        App::backend()->updater       = new Update(DC_UPDATE_URL, 'dotclear', DC_UPDATE_VERSION, DC_TPL_CACHE . '/versions');
 
         // Run check
         try {
-            dcCore::app()->admin->updater->checkIntegrity(DC_ROOT . '/inc/digests', DC_ROOT);
+            App::backend()->updater->checkIntegrity(DC_ROOT . '/inc/digests', DC_ROOT);
         } catch (Exception $e) {
             $msg       = $e->getMessage();
-            $bad_files = dcCore::app()->admin->updater->getBadFiles();
+            $bad_files = App::backend()->updater->getBadFiles();
             if (count($bad_files)) {
-                dcCore::app()->admin->has_bad_files = true;
+                App::backend()->has_bad_files = true;
 
                 $msg = __('The following files differ from your initial dotclear installation :') .
                     '<ul><li><strong>' .
@@ -62,7 +62,7 @@ class Manage extends Process
                 $msg = __('An unexpected error occured : ') . $e->getMessage();
             }
 
-            dcCore::app()->error->add($msg);
+            App::error()->add($msg);
         }
 
         return true;
@@ -88,7 +88,7 @@ class Manage extends Process
         echo Notices::getNotices();
 
         // Content
-        if (!dcCore::app()->admin->has_bad_files) {
+        if (!App::backend()->has_bad_files) {
             echo
             '<h2>' . __('Diagnostics') . '</h2>' .
             '<p class="message">' . __('All your installation files are correct.') . '</p>';
