@@ -43,11 +43,11 @@ class Manage extends Process
 
         // Init stuff
         App::backend()->has_bad_files = false;
-        App::backend()->updater       = new Update(DC_UPDATE_URL, 'dotclear', DC_UPDATE_VERSION, DC_TPL_CACHE . '/versions');
+        App::backend()->updater       = new Update(App::config()->coreUpdateUrl(), 'dotclear', App::config()->coreUpdateCanal(), App::config()->cacheRoot() . '/versions');
 
         // Run check
         try {
-            App::backend()->updater->checkIntegrity(DC_ROOT . '/inc/digests', DC_ROOT);
+            App::backend()->updater->checkIntegrity(App::config()->dotclearRoot() . '/inc/digests', App::config()->dotclearRoot());
         } catch (Exception $e) {
             $msg       = $e->getMessage();
             $bad_files = App::backend()->updater->getBadFiles();
