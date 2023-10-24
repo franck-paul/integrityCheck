@@ -13,7 +13,7 @@ $this->registerModule(
     'IntegrityCheck',
     'Checks dotclear installation files integrity',
     'Bruno Hondelatte and contributors',
-    '4.0',
+    '5.0',
     [
         'requires' => [['core', '2.28']],
         'type'     => 'plugin',
