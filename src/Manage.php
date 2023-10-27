@@ -48,10 +48,10 @@ class Manage extends Process
         // Run check
         try {
             App::backend()->updater->checkIntegrity(App::config()->dotclearRoot() . '/inc/digests', App::config()->dotclearRoot());
-        } catch (Exception $e) {
-            $msg       = $e->getMessage();
+        } catch (Exception $exception) {
+            $msg       = $exception->getMessage();
             $bad_files = App::backend()->updater->getBadFiles();
-            if (count($bad_files)) {
+            if (count($bad_files) > 0) {
                 App::backend()->has_bad_files = true;
 
                 $msg = __('The following files differ from your initial dotclear installation :') .
@@ -59,7 +59,7 @@ class Manage extends Process
                     implode('</strong></li><li><strong>', $bad_files) .
                     '</strong></li></ul>';
             } else {
-                $msg = __('An unexpected error occured : ') . $e->getMessage();
+                $msg = __('An unexpected error occured : ') . $exception->getMessage();
             }
 
             App::error()->add($msg);
