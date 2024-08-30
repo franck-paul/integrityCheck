@@ -20,6 +20,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=integrityCheck',
         'support'    => 'https://github.com/franck-paul/integrityCheck',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/integrityCheck/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/integrityCheck/main/dcstore.xml',
     ]
 );
