@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief integrityCheck, a plugin for Dotclear 2
  *
@@ -21,6 +22,9 @@ use Dotclear\Core\Backend\Update;
 use Dotclear\Core\Process;
 use Exception;
 
+/**
+ * @todo switch Helper/Html/Form/...
+ */
 class Manage extends Process
 {
     /**
