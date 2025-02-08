@@ -18,8 +18,13 @@ namespace Dotclear\Plugin\integrityCheck;
 use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
-use Dotclear\Core\Backend\Update;
 use Dotclear\Core\Process;
+use Dotclear\Core\Upgrade\Update;
+use Dotclear\Helper\Html\Form\Li;
+use Dotclear\Helper\Html\Form\Note;
+use Dotclear\Helper\Html\Form\Set;
+use Dotclear\Helper\Html\Form\Text;
+use Dotclear\Helper\Html\Form\Ul;
 use Exception;
 
 /**
@@ -53,20 +58,21 @@ class Manage extends Process
         try {
             App::backend()->updater->checkIntegrity(App::config()->dotclearRoot() . '/inc/digests', App::config()->dotclearRoot());
         } catch (Exception $exception) {
-            $msg       = $exception->getMessage();
             $bad_files = App::backend()->updater->getBadFiles();
             if (count($bad_files) > 0) {
                 App::backend()->has_bad_files = true;
 
-                $msg = __('The following files differ from your initial dotclear installation :') .
-                    '<ul><li><strong>' .
-                    implode('</strong></li><li><strong>', $bad_files) .
-                    '</strong></li></ul>';
+                $msg = (new Set())
+                    ->items([
+                        (new Text(null, __('The following files differ from your initial dotclear installation :'))),
+                        (new Ul())
+                            ->items(array_map(fn ($bad) => (new Li())->text($bad), $bad_files)),
+                    ]);
             } else {
-                $msg = __('An unexpected error occured : ') . $exception->getMessage();
+                $msg = (new Text(null, __('An unexpected error occured : ') . $exception->getMessage()));
             }
 
-            App::error()->add($msg);
+            App::error()->add($msg->render());
         }
 
         return true;
@@ -89,13 +95,18 @@ class Manage extends Process
                 __('Integrity Check') => '',
             ]
         );
+
         echo Notices::getNotices();
 
         // Content
-        if (!App::backend()->has_bad_files) {
-            echo
-            '<h2>' . __('Diagnostics') . '</h2>' .
-            '<p class="message">' . __('All your installation files are correct.') . '</p>';
+        if (!App::error()->flag() && !App::backend()->has_bad_files) {
+            echo (new Set())
+                ->items([
+                    (new Note())
+                        ->class('message')
+                        ->text(__('All your installation files are correct.')),
+                ])
+            ->render();
         }
 
         Page::closeModule();
