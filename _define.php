@@ -17,11 +17,12 @@ $this->registerModule(
     '5.3',
     [
         'date'     => '2025-02-08T16:18:12+0100',
-        'requires' => [['core', '2.28']],
+        'requires' => [['core', '2.36']],
         'type'     => 'plugin',
 
         'details'    => 'https://open-time.net/?q=integrityCheck',
         'support'    => 'https://github.com/franck-paul/integrityCheck',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/integrityCheck/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );

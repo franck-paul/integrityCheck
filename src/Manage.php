@@ -18,17 +18,19 @@ namespace Dotclear\Plugin\integrityCheck;
 use Dotclear\App;
 use Dotclear\Core\Backend\Notices;
 use Dotclear\Core\Backend\Page;
-use Dotclear\Core\Process;
 use Dotclear\Core\Upgrade\Update;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Note;
 use Dotclear\Helper\Html\Form\Set;
 use Dotclear\Helper\Html\Form\Text;
 use Dotclear\Helper\Html\Form\Ul;
+use Dotclear\Helper\Process\TraitProcess;
 use Exception;
 
-class Manage extends Process
+class Manage
 {
+    use TraitProcess;
+
     /**
      * Initializes the page.
      */
