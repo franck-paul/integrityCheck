@@ -16,8 +16,6 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\integrityCheck;
 
 use Dotclear\App;
-use Dotclear\Core\Backend\Notices;
-use Dotclear\Core\Backend\Page;
 use Dotclear\Core\Upgrade\Update;
 use Dotclear\Helper\Html\Form\Li;
 use Dotclear\Helper\Html\Form\Note;
@@ -86,16 +84,16 @@ class Manage
             return;
         }
 
-        Page::openModule(My::name());
+        App::backend()->page()->openModule(My::name());
 
-        echo Page::breadcrumb(
+        echo App::backend()->page()->breadcrumb(
             [
                 __('System')          => '',
                 __('Integrity Check') => '',
             ]
         );
 
-        echo Notices::getNotices();
+        echo App::backend()->notices()->getNotices();
 
         // Content
         if (!App::error()->flag() && !App::backend()->has_bad_files) {
@@ -108,6 +106,6 @@ class Manage
             ->render();
         }
 
-        Page::closeModule();
+        App::backend()->page()->closeModule();
     }
 }
