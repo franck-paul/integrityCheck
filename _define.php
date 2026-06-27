@@ -14,9 +14,9 @@ $this->registerModule(
     'IntegrityCheck',
     'Checks dotclear installation files integrity',
     'Bruno Hondelatte and contributors',
-    '6.2',
+    '6.3',
     [
-        'date'     => '2026-04-06T12:04:04+0200',
+        'date'     => '2026-06-27T22:56:26+0200',
         'requires' => [['core', '2.36']],
         'type'     => 'plugin',
 
