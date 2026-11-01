@@ -96,7 +96,7 @@ class Manage
         echo App::backend()->notices()->getNotices();
 
         // Content
-        if (!App::error()->flag() && !App::backend()->has_bad_files) {
+        if (!App::error()->flag() && !(bool) App::backend()->has_bad_files) {
             echo (new Set())
                 ->items([
                     (new Note())
