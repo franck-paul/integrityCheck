@@ -17,9 +17,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'IntegrityCheck',
         'Checks dotclear installation files integrity',
         'Bruno Hondelatte and contributors',
-        '6.3',
+        '6.4',
         [
-            'date'     => '2026-06-27T22:56:26+0200',
+            'date'     => '2026-11-07T16:56:24+0100',
             'requires' => [['core', '2.36']],
             'type'     => 'plugin',
 
